@@ -1,8 +1,17 @@
 #pragma once
 
-class Monster
+#include "Character.h"
+
+#include <string>
+
+
+
+class Monster : public Character
 {
 	public:
-		//Monster Constructor
-		Monster(int numMonsters);
+		Monster();
+
+		int Move();
+
+		void SetName(std::string name);
 };

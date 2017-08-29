@@ -1,18 +1,14 @@
 #pragma once
 
-class Player
+#include "Character.h"
+
+class Player : public Character
 {
 	public:
 		//Player Constructor
 		Player();
-		
-		//Function that Moves that Moves Character
+
+		//Moves Player in Direction that they Wish to Move
 		int Move(char dir);
-
-		//Returns X Position of the Character
-		int PosX();
-
-		//Returns Y Position of the Character
-		int PosY();
 };
 
