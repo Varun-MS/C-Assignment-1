@@ -3,6 +3,6 @@
 class Arena
 {
 	public:
-		//Player Constructor
+		//Arena Constructor
 		Arena();
 };
