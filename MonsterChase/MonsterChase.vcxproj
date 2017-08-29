@@ -144,7 +144,6 @@
   <ItemGroup>
     <ClCompile Include="Arena.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MonsterNames.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Monster.cpp" />
   </ItemGroup>

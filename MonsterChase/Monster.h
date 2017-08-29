@@ -4,5 +4,5 @@ class Monster
 {
 	public:
 		//Monster Constructor
-		Monster();
+		Monster(int numMonsters);
 };
