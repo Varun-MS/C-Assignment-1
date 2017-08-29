@@ -14,4 +14,6 @@ class Monster : public Character
 		int Move();
 
 		void SetName(std::string name);
+
+		int turnsRemaining;
 };

@@ -14,15 +14,15 @@ Player::Player()
 
 	isAlive = true;
 
-	printf("\nEnter your Name, Valiant Warrior: ");
+	std::cout << "\nEnter your Name, Valiant Warrior: ";
 	std::cin >> name;
 
 	posX = rand() % 10;
 	posY = rand() % 10;
 
 	std::cout << "\nHello " << name << "!";
-	printf("\nIt looks like you have spawned at Row %d, Column %d. Good luck!", posY+1, posX+1);
-	printf("\n\n**********************************************\n");
+	std::cout << "\nIt looks like you have spawned at: [" << posX + 1 << "," << posY + 1 << "]";
+	std::cout << "\n\n**********************************************\n";
 	getchar();
 }
 

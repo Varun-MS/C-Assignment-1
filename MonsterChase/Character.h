@@ -16,15 +16,15 @@ class Character
 		//Returns the Name of the Character
 		std::string GetName();
 
+		//Indicates whether the Character is Alive
+		bool isAlive = false;
+
 	protected:
 		//X Position of the Character
 		int posX;
 
 		//Y Position of the Character
 		int posY;
-
-		//Indicates whether the Character is Alive
-		bool isAlive = false;
 
 		//Name of the Character
 		std::string name;

@@ -7,21 +7,17 @@
 #include <fstream>
 #include <string>
 
-#include "Arena.h"
 #include "Player.h"
 #include "Monster.h"
 
 int main()
 {
-	//Initialises the Arena!
-	Arena arena;
-
 	//Initialises the Player!
 	Player player1;
 	
 	//Creates Monsters for the Player to Face, based on Player Input
 	int numMonsters;
-	printf("\nHow brave do you feel, warrior? How many monsters do you dare face? ");
+	std::cout << "\nHow brave do you feel, " << player1.GetName() << "? How many monsters do you dare face? ";
 	scanf("%d", &numMonsters);
 	printf("\n");
 	
@@ -48,14 +44,15 @@ int main()
 	//Inputs the Randomly Selected Monster Names
 	for (int i = 0; i < numMonsters; i++)
 	{
-		std::cout << "Here is the name of monster " << i + 1 << ": " << monsters[i].GetName() << std::endl;
+		std::cout << "\nHere is the name of monster " << i + 1 << ": " << monsters[i].GetName() << std::endl;
+		std::cout << "He has " << monsters[i].turnsRemaining << " turns remaining!\n";
 	}
 
 	//Outputs the Positions of All the Monsters
 	printf("\n");
 	for (int i = 0; i < numMonsters; i++)
 	{
-		printf("\nMonster %d is at position %d,%d", i + 1, monsters[i].PosX(), monsters[i].PosY());
+		std::cout << "\nMonster " << i+1 << " is at position: [" << monsters[i].PosX()+1 << "," << monsters[i].PosY()+1 << "]";
 	}
 
 	printf("\n\n**********************************************\n");
@@ -64,14 +61,43 @@ int main()
 	char dir = 'z';
 	while (dir != 'q')
 	{
-		std::cout << "Your Move, " << player1.GetName() << "!" << std::endl;
+		std::cout << "\nYour Move, " << player1.GetName() << ". Use WASD to Move and Q to Quit: ";
 		std::cin >> dir;
 
 		player1.Move(dir);
 
-		std::cout << "\nYour new row is: " << player1.PosY()+1;
-		std::cout << "\nYour new column is: " << player1.PosX()+1;
+		std::cout << "\nYou are now at: [" << player1.PosX()+1 << "," << player1.PosY()+1 << "]\n" ;
 
+		for (int i = 0; i < numMonsters; i++)
+		{
+			monsters[i].Move();
+			
+			if (player1.PosX() == monsters[i].PosX() && player1.PosY() == monsters[i].PosY())
+			{
+				player1.isAlive = false;
+			}
+
+			if (monsters[i].isAlive == false)
+			{
+				std::cout << "Monster " << i + 1 << "died";
+			}
+
+			else
+			{
+				std::cout << "\nMonster " << i + 1 << " is at position: [" << monsters[i].PosX() + 1 << "," << monsters[i].PosY() + 1 << "]";
+			}
+		}
+		
+		if (player1.isAlive == false)
+		{
+			printf("\n\n**********************************************\n");
+			std::cout << "\nYou died!";
+			getchar();
+			dir = 'q';
+		}
+
+		printf("\n\n**********************************************\n");
+	
 	}
 
 	getchar();
